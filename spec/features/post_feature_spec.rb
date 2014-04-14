@@ -4,7 +4,7 @@ describe 'posts index page' do
   context 'no posts' do
     it 'shows a message' do
       visit '/posts'
-      expect(page).to have_content 'No posts yet'
+      expect(page).to have_content 'No posts added'
     end
   end
 
@@ -25,7 +25,7 @@ describe 'posts index page' do
         visit '/posts/new'
         click_button 'Create Post'
 
-        expect(page).to have_content 'errors'
+        expect(page).to have_content 'error'
       end
     end
   end
