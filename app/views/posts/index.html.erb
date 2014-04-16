@@ -1,6 +1,7 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
     <%= post.description %>
+    <%= image_tag post.picture.url(:medium), class: 'uploaded-pic' %>
   <% end %>
 <% else %>
   No posts added
