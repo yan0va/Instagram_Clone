@@ -28,6 +28,7 @@ gem 'spring',        group: :development
 
 gem "paperclip", "~> 4.1"
 gem "aws-sdk"
+gem "heroku_secrets", github: "alexpeattie/heroku_secrets"
 
 group :development, :test do
   gem 'capybara'
