@@ -7,26 +7,26 @@ describe 'posts index page' do
       expect(page).to have_content 'No posts added'
     end
   end
+end
 
-  describe 'adding posts' do
-    context 'valid post' do
-      it 'is added to the posts page' do
-        visit '/posts/new'
-        fill_in 'Description', with: 'My holiday pic'
-        click_button 'Create Post'
+describe 'adding posts' do
+  context 'valid post' do
+    it 'is added to the posts page' do
+      visit '/posts/new'
+      fill_in 'Description', with: 'My holiday pic'
+      click_button 'Create Post'
 
-        expect(current_path).to eq '/posts'
-        expect(page).to have_content 'My holiday pic'
-      end
+      expect(current_path).to eq '/posts'
+      expect(page).to have_content 'My holiday pic'
     end
+  end
 
-    context 'invalid post' do
-      it 'shows an error' do
-        visit '/posts/new'
-        click_button 'Create Post'
+  context 'invalid post' do
+    it 'shows an error' do
+      visit '/posts/new'
+      click_button 'Create Post'
 
-        expect(page).to have_content 'error'
-      end
+      expect(page).to have_content 'error'
     end
   end
 
@@ -37,5 +37,18 @@ describe 'posts index page' do
       visit '/posts'
       expect(page).to have_content 'Some awesome snap'
     end
-  end
+
+    describe 'deleting a post' do
+
+      it 'removes the post' do
+        visit '/posts'
+        click_link 'Delete'
+
+        expect(page).not_to have_content 'Some awesome snap'
+      end
+    
+    end
+  
+  end 
+
 end
