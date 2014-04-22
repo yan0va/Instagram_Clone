@@ -15,5 +15,5 @@ describe 'Uploading photos' do
     # that it contains a substring 'image2'
     expect(find('img')['src']).to match(/image2/)
   end
-
+  
 end

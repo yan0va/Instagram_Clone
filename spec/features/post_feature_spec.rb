@@ -30,6 +30,17 @@ describe 'adding posts' do
     end
   end
 
+  describe 'with tags' do
+    it 'adds the tag with the post' do
+      visit '/posts/new'
+      fill_in 'Description', with: 'My holiday pic'
+      fill_in 'Tags', with: '#coffee, #cafe'
+      click_button 'Create Post'
+
+      expect(page).to have_content '#coffee, #cafe'
+    end
+  end
+
   context 'with posts' do
     before { Post.create(description: 'Some awesome snap') }
 
@@ -46,9 +57,6 @@ describe 'adding posts' do
 
         expect(page).not_to have_content 'Some awesome snap'
       end
-    
     end
-  
   end 
-
 end
