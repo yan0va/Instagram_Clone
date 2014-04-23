@@ -35,6 +35,7 @@ gem "heroku_secrets", github: "alexpeattie/heroku_secrets"
 group :development, :test do
   gem 'capybara'
   gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 group :production do
