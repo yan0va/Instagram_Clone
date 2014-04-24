@@ -59,4 +59,25 @@ describe 'adding posts' do
       end
     end
   end 
-end
+
+  context 'with post with tags' do
+    before do
+      create(:post, tag_names: '#cafe #coffee')
+      create(:post, description: 'Check out this Coffee Shop!')
+    end
+  end
+
+    describe 'clicking a tag' do
+      it 'shows the photos for that tag' do
+        visit '/posts'
+        click_link '#cafe'
+        expect(page).to have_content 'Some awesome snap'
+      end
+
+      it 'does not show photos without that tag' do
+        visit '/posts'
+        click_link '#cafe'
+        expect(page).not_to have_content 'Check out this Coffee Shop!'
+      end
+    end
+  end  
